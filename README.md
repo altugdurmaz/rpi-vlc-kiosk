@@ -11,7 +11,7 @@ Install a version of Raspbian Lite (Minimal image based on Debian Buster). You c
 Once the image is downloaded, you can burn it to your SD card with tools like Etcher (https://www.balena.io/etcher/)
 
 1- You need to connect the pi to an external monitor and keyboard during the setup phase.   
-2- insert your micro sd card to RPI and plug-in power cable
+2- insert your micro sd card into RPI and plug-in power cable
 
 ### Connect your raspberry pi
 
@@ -51,7 +51,7 @@ reboot
 ```sh
 sudo apt-get install vlc
 ```
-## Play inline commands urls 
+## Play inline command urls 
 Download the video you want to play on your booth. Since we will be using vlc (https://www.videolan.org/vlc/), your video should have a format that is supported by vlc.
 
 Before we start, let's know the options that will work for us
@@ -66,7 +66,7 @@ important: to use VLC from the command line without the default interface, then 
 .
 .
 ```
-You can to reach more: https://wiki.videolan.org/Documentation:Command_line/#Receiving_a_network_stream
+You can reach more: https://wiki.videolan.org/Documentation:Command_line/#Receiving_a_network_stream
 
 ### Let's try what we learned
 
@@ -90,7 +90,8 @@ This will copy your video to the home directory of your Raspberry Pi.
 ### Create a background job that will start playing your video when booting your Pi
 
 We are going to create a background job that your operating system will launch at each boot of your Pi. To do so, we are creating a systemd unit file that will have this content :
-`
+```sh
+
 [Unit]
 Description=rpiKiosk
 
@@ -103,7 +104,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-`
+```
 We created a systemd service that we call `rpiKiosk`. 
 
 - We add a `User` field as VLC is not supposed to be started as the root user. 
